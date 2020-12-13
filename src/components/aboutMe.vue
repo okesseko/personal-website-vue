@@ -1,32 +1,32 @@
 <template>
   <div id="about-me">
-    <introduce
-      title="關於林詠振"
-      :des-title="desTitle"
-      :content="content"
-      :images="images"
-    />
+    <h2 class="main-title">關於林詠振</h2>
+    <div class="grid">
+      <div id="ntust-icon" class="des-icon" />
+      <div>
+        <p class="des-title">台灣科技大學 資訊工程系學士班</p>
+        <p class="des-subtitle">專題教授: 戴文凱教授</p>
+        <p class="des-cont">專題資料...</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Introduce from "./introduce.vue";
 export default {
   name: "AboutMe",
-  data() {
-    return {
-      desTitle: ["台灣科技大學 資訊工程系學士班"],
-      content: [`專題教授: 戴文凱教授 \n 專題資料...`],
-      images: ["TaiwanTech.png"],
-    };
-  },
-  components: { Introduce },
 };
 </script>
 
-<style >
+<style scoped>
+@import "../css/font.css";
+@import "../css/image.css";
+@import "../css/display.css";
 #about-me {
-  height: 100%;
-  background-color: white;
+  width: 100%;
+}
+#ntust-icon {
+  background-image: url(../images/TaiwanTech.png);
+  background-color: rgba(177, 229, 242, 0.8);
 }
 </style>
