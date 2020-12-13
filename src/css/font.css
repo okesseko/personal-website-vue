@@ -1,0 +1,48 @@
+.home-title {
+    font-size: 2.5rem;
+    color    : white;
+    margin   : 0;
+}
+
+.home-subtitle {
+    font-size: 5rem;
+    color    : white;
+    margin   : 20px 0 0 0;
+}
+
+.main-title {
+    font-size    : 2.6rem;
+    margin-bottom: 1.5rem;
+}
+
+.des-title {
+    text-align : left;
+    font-size  : 1.3rem;
+    font-weight: bold;
+    color      : #548c2f;
+}
+
+.des-subtitle {
+    margin     : 0 0 1rem 40px;
+    text-align : left;
+    font-size  : 1.2rem;
+    font-weight: bold;
+    color      : #4A5859;
+}
+
+.des-cont {
+    margin     : 0 0 0 40px;
+    text-align : left;
+    font-size  : 1rem;
+    line-height: 150%;
+}
+
+.menu-tag {
+    cursor      : pointer;
+    margin-right: 5%;
+}
+
+.menu-tag:hover {
+    border-bottom : 3px solid white;
+    padding-bottom: 5px;
+}

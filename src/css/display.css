@@ -1,0 +1,5 @@
+.grid {
+    display              : grid;
+    place-content        : center;
+    grid-template-columns: 80%;
+}

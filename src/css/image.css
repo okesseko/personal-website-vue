@@ -1,0 +1,15 @@
+.home-background {
+    background-position  : center;
+    background-attachment: fixed;
+    background-repeat    : no-repeat;
+    background-size      : cover;
+}
+
+.des-icon {
+    background-repeat  : no-repeat;
+    background-position: center;
+    background-size    : 80%;
+    border-radius      : 15%;
+    max-width          : 320px;
+    height             : 260px;
+}
