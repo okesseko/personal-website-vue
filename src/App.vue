@@ -1,18 +1,20 @@
 <template>
   <!-- <HelloWorld msg="Hello Vue 3.0 + Vite" :obs="{tes:'te'}" /> -->
-  <menu-bar />
+  <navbar />
   <home />
   <about-me />
   <experience />
+  <contact />
 </template>
 
 <script>
 import AboutMe from "./components/aboutMe.vue";
 import Experience from "./components/experience.vue";
 import Home from "./components/home.vue";
-import MenuBar from "./components/menuBar.vue";
+import Navbar from "./components/navbar.vue";
+import Contact from "./components/contact.vue";
 export default {
   name: "App",
-  components: { Home, MenuBar, AboutMe, Experience },
+  components: { Home, Contact, Navbar, AboutMe, Experience },
 };
 </script>
