@@ -1,5 +1,5 @@
 <template>
-  <div id="home" class="home-background grid">
+  <div id="home_" class="home-background grid">
     <h1 class="home-title">
       <i>你好，我是</i> <br />
       <p class="home-subtitle">林詠振</p>
@@ -17,9 +17,9 @@ export default {
 @import "../css/font.css";
 @import "../css/image.css";
 @import "../css/display.css";
-#home {
+#home_ {
   background-image: url("../images/main.jpg");
   height: 100vh;
-  width: 100%;
+  max-width: 100%;
 }
 </style>
