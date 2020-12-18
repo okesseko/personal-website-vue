@@ -1,3 +1,9 @@
+.nav-tag {
+    font-size  : 1.2rem;
+    font-weight: bold;
+    padding    : 20px;
+}
+
 .home-title {
     font-size: 2.5rem;
     color    : white;
@@ -21,28 +27,25 @@
     font-weight: bold;
     color      : #548c2f;
 }
+.des-title span{
+    font-size: 0.5rem;
+    color: #B6CB9E;
+}
 
 .des-subtitle {
-    margin     : 0 0 1rem 40px;
+    /* margin     : 0 0 1rem 40px; */
     text-align : left;
     font-size  : 1.2rem;
     font-weight: bold;
     color      : #4A5859;
 }
-
+.des-subtitle span{
+    font-size: 0.48rem;
+    color: #B6CB9E;
+}
 .des-cont {
-    margin     : 0 0 0 40px;
+    /* margin     : 0 0 0 40px; */
     text-align : left;
     font-size  : 1rem;
     line-height: 150%;
-}
-
-.menu-tag {
-    cursor      : pointer;
-    margin-right: 5%;
-}
-
-.menu-tag:hover {
-    border-bottom : 3px solid white;
-    padding-bottom: 5px;
 }

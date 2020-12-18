@@ -2,4 +2,33 @@
     display              : grid;
     place-content        : center;
     grid-template-columns: 80%;
+    justify-items        : center;
+}
+
+@media screen and (min-width: 768px) {
+    .grid {
+        grid-template-columns: 35% 55%;
+        gap: 20px;
+    }
+
+    .grid div:first-child {
+        justify-self: flex-end;
+    }
+
+    .grid div:last-child {
+        justify-self: baseline;
+    }
+}
+
+.flex-center {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    flex-direction : column;
+}
+
+.flex-end {
+    display        : flex;
+    justify-content: flex-end;
+    align-items    : center;
 }
