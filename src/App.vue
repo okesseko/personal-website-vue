@@ -1,6 +1,5 @@
 <template>
-  <!-- <HelloWorld msg="Hello Vue 3.0 + Vite" :obs="{tes:'te'}" /> -->
-  <navbar />
+  <navbar :elemetHeight="elemetHeight" />
   <home />
   <about-me />
   <experience />
@@ -16,5 +15,21 @@ import Contact from "./components/contact.vue";
 export default {
   name: "App",
   components: { Home, Contact, Navbar, AboutMe, Experience },
+  data() {
+    return {
+      elemetHeight: [],
+    };
+  },
+  mounted() {
+    this.countHeight();
+  },
+  methods: {
+    countHeight() {
+      this.elemetHeight.push(document.getElementById("home_").offsetTop);
+      this.elemetHeight.push(document.getElementById("about-me_").offsetTop);
+      this.elemetHeight.push(document.getElementById("experience_").offsetTop);
+      this.elemetHeight.push(document.getElementById("contact_").offsetTop);
+    },
+  },
 };
 </script>
