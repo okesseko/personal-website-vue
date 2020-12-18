@@ -58,7 +58,12 @@
 export default {
   name: "Navbar",
   props: {
-    elemetHeight: [],
+    elemetHeight: {
+      default: [],
+    },
+    scrollH: {
+      default: 0,
+    },
   },
   data() {
     return {
@@ -66,17 +71,14 @@ export default {
       lastScrollY: 0,
       mediaType: "phone",
       seeMore: false,
-      isColse: false,
       nowPlace: "home",
     };
   },
   created() {
     this.onResize();
-    window.addEventListener("scroll", this.debounce);
     window.addEventListener("resize", this.onResize);
   },
   unmounted() {
-    window.removeEventListener("scroll", this.debounce);
     window.addEventListener("resize", this.onResize);
   },
   watch: {
@@ -85,43 +87,39 @@ export default {
         document.getElementsByTagName("body")[0].style.overflow = "hidden";
       else document.getElementsByTagName("body")[0].style.overflow = "scroll";
     },
-  },
-  methods: {
-    onClick(id) {
-      this.seeMore = false;
-      this.nowPlace = id;
-      console.log(id);
-    },
-    debounce() {
-      if (!this.isColse) {
-        this.isColse = true;
-        this.handleScroll();
-        setTimeout(() => {
-          this.isColse = false;
-        }, 1000 / 60);
-      }
-    },
-    handleScroll() {
-      let now = window.scrollY;
-      if (now < this.elemetHeight[1]) {
+    scrollH: function () {
+      if (this.scrollH < this.elemetHeight[1]) {
         this.nowPlace = "home";
         location.hash = "home";
-      } else if (this.elemetHeight[1] <= now && now < this.elemetHeight[2]) {
+      } else if (
+        this.elemetHeight[1] <= this.scrollH &&
+        this.scrollH < this.elemetHeight[2]
+      ) {
         this.nowPlace = "about-me";
         location.hash = "about-me";
-      } else if (this.elemetHeight[2] <= now && now < this.elemetHeight[3]) {
+      } else if (
+        this.elemetHeight[2] <= this.scrollH &&
+        this.scrollH < this.elemetHeight[3]
+      ) {
         this.nowPlace = "experience";
         location.hash = "experience";
       } else {
         this.nowPlace = "contact";
         location.hash = "contact";
       }
-      if (now < this.lastScrollY) {
+      if (this.scrollH < this.lastScrollY) {
         this.navbarShow = true;
       } else {
         this.navbarShow = false;
       }
-      this.lastScrollY = now;
+      this.lastScrollY = this.scrollH;
+    },
+  },
+  methods: {
+    onClick(id) {
+      this.seeMore = false;
+      this.nowPlace = id;
+      console.log(id);
     },
     onResize() {
       if (window.innerWidth >= 768) {

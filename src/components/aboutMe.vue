@@ -2,42 +2,43 @@
   <div id="about-me_">
     <h2 class="main-title">關於林詠振</h2>
 
-    <transition name="fade" >
-      <div  class="grid">
-        <div id="ntust-icon" class="des-icon" />
-        <div>
-          <p class="des-title">台灣科技大學 資訊工程系學士班</p>
-          <p class="des-subtitle">專題教授: 戴文凱教授</p>
-          <p class="des-cont">專題資料...</p>
-        </div>
+    <div
+      id="ntust-des"
+      class="grid"
+      style="opacity: 0"
+      :class="{ fadeIn: show }"
+    >
+      <div id="ntust-icon" class="des-icon" />
+      <div>
+        <p class="des-title">台灣科技大學 資訊工程系學士班</p>
+        <p class="des-subtitle">專題教授: 戴文凱教授</p>
+        <p class="des-cont">專題資料...</p>
       </div>
-    </transition>
-    <!-- <transition name="fade">
-      <div v-if="show" class="grid">
-        <div id="ntust-icon" class="des-icon" />
-        <div>
-          <p class="des-title">台灣科技大學 資訊工程系學士班</p>
-          <p class="des-subtitle">專題教授: 戴文凱教授</p>
-          <p class="des-cont">專題資料...</p>
-        </div>
-      </div>
-    </transition> -->
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "AboutMe",
+  props: {
+    scrollH: {
+      default: 0,
+    },
+  },
   data() {
     return {
-      show: true,
+      show: false,
+      eleHeight: 0,
     };
   },
-  created() {
-    // window.addEventListener("scroll", function te(e) {
-    //   let ww = document.getElementById("experience");
-    //   console.log(ww.offsetTop, this.window.innerHeight + this.window.scrollY);
-    // });
+  mounted() {
+    this.eleHeight = document.getElementById("ntust-des").offsetTop;
+  },
+  watch: {
+    scrollH: function () {
+      if (this.scrollH + window.innerHeight > this.eleHeight) this.show = true;
+    },
   },
 };
 </script>
@@ -46,15 +47,6 @@ export default {
 @import "../css/font.css";
 @import "../css/image.css";
 @import "../css/display.css";
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 5s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  transform: translateY(20px);
-  opacity: 0;
-}
 #about-me_ {
   padding: 2rem 0;
 }

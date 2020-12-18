@@ -1,8 +1,8 @@
 <template>
-  <navbar :elemetHeight="elemetHeight" />
+  <navbar :elemetHeight="elemetHeight" :scrollH="scrollH" />
   <home />
-  <about-me />
-  <experience />
+  <about-me  :scrollH="scrollH"/>
+  <experience  :scrollH="scrollH"/>
   <contact />
 </template>
 
@@ -18,12 +18,30 @@ export default {
   data() {
     return {
       elemetHeight: [],
+      scrollH: 0,
+       isColse: false,
     };
   },
   mounted() {
+    window.addEventListener("scroll", this.debounce);
     this.countHeight();
   },
+  unmounted() {
+    window.addEventListener("scroll", this.debounce);
+  },
   methods: {
+    debounce() {
+      if (!this.isColse) {
+        this.isColse = true;
+        this.handleScroll();
+        setTimeout(() => {
+          this.isColse = false;
+        }, 1000 / 60);
+      }
+    },
+    handleScroll() {
+      this.scrollH = window.scrollY;
+    },
     countHeight() {
       this.elemetHeight.push(document.getElementById("home_").offsetTop);
       this.elemetHeight.push(document.getElementById("about-me_").offsetTop);
