@@ -1,57 +1,45 @@
 <template>
-  <header id="navbar" v-show="navbarShow">
-    <button
-      id="seeMore"
-      v-show="mediaType === 'phone'"
-      class="small-icon"
-      @click="seeMore = !seeMore"
-    />
-    <div
-      :class="{ yy: mediaType === 'phone' }"
-      v-show="mediaType === 'phone' ? seeMore : true"
-    >
+  <transition name="fade">
+    <header id="navbar" v-show="navbarShow">
       <button
-        id="leave"
+        id="seeMore"
+        v-show="mediaType === 'phone'"
         class="small-icon"
-        v-show="mediaType === 'phone' ? seeMore : false"
         @click="seeMore = !seeMore"
       />
-      <nav
-        :class="{
-          'flex-center': mediaType === 'phone',
-          'flex-end': mediaType !== 'phone',
-        }"
-        :style="{ height: mediaType === 'phone' ? '100%' : '4rem' }"
+      <div
+        :class="{ backdrop: mediaType === 'phone' }"
+        v-show="mediaType === 'phone' ? seeMore : true"
+        @touchmove.prevent
       >
-        <ul>
-          <li class="nav-tag">
-            <a
-              href="#about-me_"
-              :class="{ color: nowPlace === 'about-me' }"
-              @click="onClick('about-me')"
-              >關於林詠振</a
-            >
-          </li>
-          <li class="nav-tag">
-            <a
-              href="#experience_"
-              :class="{ color: nowPlace === 'experience' }"
-              @click="onClick('experience')"
-              >經驗</a
-            >
-          </li>
-          <li class="nav-tag">
-            <a
-              href="#contact_"
-              :class="{ color: nowPlace === 'contact' }"
-              @click="onClick('contact')"
-              >聯絡</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+        <button
+          id="leave"
+          class="small-icon"
+          v-show="mediaType === 'phone' ? seeMore : false"
+          @click="seeMore = !seeMore"
+        />
+        <nav
+          :class="{
+            'flex-center': mediaType === 'phone',
+            'flex-end': mediaType !== 'phone',
+          }"
+          :style="{ height: mediaType === 'phone' ? '100%' : '4rem' }"
+        >
+          <ul>
+            <li class="nav-tag" :class="{ color: nowPlace === 'about-me' }">
+              <a href="#about-me_" @click="onClick('about-me')">關於林詠振</a>
+            </li>
+            <li class="nav-tag" :class="{ color: nowPlace === 'experience' }">
+              <a href="#experience_" @click="onClick('experience')">經驗</a>
+            </li>
+            <li class="nav-tag" :class="{ color: nowPlace === 'contact' }">
+              <a href="#contact_" @click="onClick('contact')">聯絡</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </transition>
 </template>
 
 <script>
@@ -83,23 +71,25 @@ export default {
   },
   watch: {
     seeMore: function () {
-      if (this.seeMore)
-        document.getElementsByTagName("body")[0].style.overflow = "hidden";
-      else document.getElementsByTagName("body")[0].style.overflow = "scroll";
+      if (this.seeMore) {
+        document.querySelector("body").style.overflow = "hidden";
+      } else {
+        document.querySelector("body").style.overflow = "scroll";
+      }
     },
     scrollH: function () {
-      if (this.scrollH < this.elemetHeight[1]) {
+      if (this.scrollH <= this.elemetHeight[1]) {
         this.nowPlace = "home";
         location.hash = "home";
       } else if (
-        this.elemetHeight[1] <= this.scrollH &&
-        this.scrollH < this.elemetHeight[2]
+        this.elemetHeight[1] < this.scrollH &&
+        this.scrollH <= this.elemetHeight[2]
       ) {
         this.nowPlace = "about-me";
         location.hash = "about-me";
       } else if (
-        this.elemetHeight[2] <= this.scrollH &&
-        this.scrollH < this.elemetHeight[3]
+        this.elemetHeight[2] < this.scrollH &&
+        this.scrollH <= this.elemetHeight[3]
       ) {
         this.nowPlace = "experience";
         location.hash = "experience";
@@ -128,6 +118,11 @@ export default {
         this.mediaType = "phone";
       }
     },
+    stopScroll(e) {
+      console.log(e);
+      e.stopPropagation();
+      e.preventDefault();
+    },
   },
 };
 </script>
@@ -136,15 +131,26 @@ export default {
 @import "../css/font.css";
 @import "../css/display.css";
 @import "../css/image.css";
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 #navbar {
   width: 100%;
   height: 4rem;
   position: fixed;
+  z-index: 1;
 }
-.color {
-  color: black;
+.color a {
+  color: #a9def9;
 }
-.yy {
+.backdrop {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.55);
 }
@@ -157,13 +163,13 @@ export default {
   border: 4px solid;
   background-image: url(../images/close.png);
 }
-.tes {
-  width: 100%;
-  height: 100%;
+ul {
+  list-style: none;
+  padding: 0;
 }
 @media screen and (min-width: 768px) {
   #navbar {
-    background: rgba(44, 73, 127, 0.7);
+    background: rgba(0, 0, 0, 0.7);
   }
   li {
     display: inline-block;
@@ -171,20 +177,5 @@ export default {
   .nav-tag {
     padding: 0px 20px;
   }
-}
-ul {
-  list-style: none;
-  padding: 0;
-}
-li,
-a {
-  text-decoration: none;
-  color: white;
-}
-li a {
-  transition: all 0.3s ease 0s;
-}
-li a:hover {
-  color: black;
 }
 </style>
