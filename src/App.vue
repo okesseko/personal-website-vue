@@ -1,8 +1,8 @@
 <template>
   <navbar :elemetHeight="elemetHeight" :scrollH="scrollH" />
   <home />
-  <about-me  :scrollH="scrollH"/>
-  <experience  :scrollH="scrollH"/>
+  <about-me :scrollH="scrollH" />
+  <experience :scrollH="scrollH" />
   <contact />
 </template>
 
@@ -19,7 +19,7 @@ export default {
     return {
       elemetHeight: [],
       scrollH: 0,
-       isColse: false,
+      isColse: false,
     };
   },
   mounted() {
