@@ -3,6 +3,7 @@
     place-content        : center;
     grid-template-columns: 80%;
     justify-items        : center;
+    z-index              : 0;
 }
 
 .fadeIn {
@@ -14,13 +15,27 @@
 
 @keyframes fadeIn {
     from {
-        opacity: 0;
+        opacity  : 0;
         transform: translateY(100px);
     }
 
     to {
         opacity: 1;
     }
+}
+
+
+.flex-center {
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    flex-direction : column;
+}
+
+.flex-end {
+    display        : flex;
+    justify-content: flex-end;
+    align-items    : center;
 }
 
 @media screen and (min-width: 768px) {
@@ -36,17 +51,4 @@
     .grid div:last-child {
         justify-self: baseline;
     }
-}
-
-.flex-center {
-    display        : flex;
-    justify-content: center;
-    align-items    : center;
-    flex-direction : column;
-}
-
-.flex-end {
-    display        : flex;
-    justify-content: flex-end;
-    align-items    : center;
 }

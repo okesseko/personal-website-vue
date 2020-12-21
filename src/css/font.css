@@ -4,6 +4,16 @@
     padding    : 20px;
 }
 
+.nav-tag a {
+    text-decoration: none;
+    color          : white;
+    transition     : all 0.3s ease 0s;
+}
+
+.nav-tag a:hover {
+    color: #a9def9;
+}
+
 .home-title {
     font-size: 2.5rem;
     color    : white;
@@ -27,25 +37,50 @@
     font-weight: bold;
     color      : #548c2f;
 }
-.des-title span{
+
+.des-title span {
     font-size: 0.5rem;
-    color: #B6CB9E;
+    color    : #B6CB9E;
 }
 
 .des-subtitle {
-    /* margin     : 0 0 1rem 40px; */
     text-align : left;
     font-size  : 1.2rem;
     font-weight: bold;
     color      : #4A5859;
 }
-.des-subtitle span{
+
+.des-subtitle span {
     font-size: 0.48rem;
-    color: #B6CB9E;
+    color    : #B6CB9E;
 }
+
 .des-cont {
-    /* margin     : 0 0 0 40px; */
     text-align : left;
     font-size  : 1rem;
     line-height: 150%;
 }
+
+.des-cont a {
+    animation: all 0.5s ease-out 0s;
+    color    : #8c8a93;
+}
+
+.des-cont a:hover {
+    color: #605e68;
+}
+
+
+.des-cont button {
+    border: none;
+    border-radius: 44px;
+    width: 150px;
+    height: 44px;
+    background-color: #548c2f;
+    color: white;
+    cursor: pointer;
+    animation: all 0.5s ease-out 0s;
+  }
+  .des-cont button:hover {
+    background-color: #457425;
+  }

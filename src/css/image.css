@@ -5,6 +5,12 @@
     background-size      : cover;
 }
 
+@supports (-webkit-touch-callout : none) {
+    .home-background {
+        background-attachment: scroll
+    }
+}
+
 .small-icon {
     width              : 40px;
     height             : 40px;

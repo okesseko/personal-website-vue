@@ -146,24 +146,4 @@ export default {
   background-image: url(../images/self_project.jpg);
   background-color: rgba(94, 180, 231);
 }
-.des-cont a {
-  animation: all 0.5s ease-out 0s;
-  color: #8c8a93;
-}
-.des-cont a:hover {
-  color: #605e68;
-}
-.des-cont button {
-  border: none;
-  border-radius: 44px;
-  width: 150px;
-  height: 44px;
-  background-color: #548c2f;
-  color: white;
-  cursor: pointer;
-  animation: all 0.5s ease-out 0s;
-}
-.des-cont button:hover {
-  background-color: #457425;
-}
 </style>
