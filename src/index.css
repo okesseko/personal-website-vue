@@ -1,13 +1,18 @@
-@font-face{
+@font-face {
   font-family: TaipeiSans;
-  src: url("./fonts/TaipeiSansTCBeta-Regular.ttf");
+  src        : url("./fonts/TaipeiSansTCBeta-Regular.ttf");
+}
+
+@font-face {
+  font-family: HanSans;
+  src        : url("./fonts/SourceHanSansTW-Regular.otf");
 }
 
 #app {
-  font-family: TaipeiSans,Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family            : HanSans, TaipeiSans, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing : antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin: 0;
-  width: 100%;
+  text-align             : center;
+  margin                 : 0;
+  width                  : 100%;
 }
